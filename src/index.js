@@ -1,31 +1,35 @@
-import store from './store';
-import * as actions from "./actionsType";
-import { added, resolved } from "./action";
+import configureStore from './store/configureStore';
+import * as actions from "./store/bugs";
 
-console.log(store);
-console.log(store.getState());
+
+const store = configureStore(); 
+
+//console.log(store);                  you can see the prop
+// console.log(store.getState());      need subscribe
 
 store.subscribe(()=> {
-    console.log("store changed", store.getState());
+    console.log("every time that the state of store change", store.getState());
 })
 
 
-store.dispatch(added("bug1"))
-store.dispatch(added("bug2"))
-store.dispatch(added("bug3"))
-store.dispatch(added("bug4"))
+store.dispatch(actions.bugAdded("bug1"))
+store.dispatch(actions.bugAdded("bug2"))
+store.dispatch(actions.bugAdded("bug3"))
+store.dispatch(actions.bugAdded("bug4"))
 
-store.dispatch(resolved(3));
+store.dispatch(actions.bugResolved(3));
 
 //unsubscribe();
-console.log("risolto", store.getState());
+console.log("after bug resolved", store.getState());
 
 store.dispatch({
-    type: actions.BUG_REMOVED,
+    type: "bugRemoved",
     payload : {
         id: 1
     }
 })
 
-//console.log(store.getState());
+
+
+console.log("final state store", store.getState());
 
