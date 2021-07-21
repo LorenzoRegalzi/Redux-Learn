@@ -1,5 +1,6 @@
 import configureStore from './store/configureStore';
-import * as actions from "./store/projects";
+import * as action from "./store/projects";
+import * as actions from "./store/bugs";
 
 
 const store = configureStore(); 
@@ -12,26 +13,26 @@ store.subscribe(()=> {
 })
 
 
-// store.dispatch(actions.bugAdded({description : "bug1"}))
-// store.dispatch(actions.bugAdded({description : "bug2"}))
-// store.dispatch(actions.bugAdded({description : "bug3"}))
-// store.dispatch(actions.bugAdded({description : "bug4"}))
+store.dispatch(actions.bugAdded({description : "bug1"}))
+store.dispatch(actions.bugAdded({description : "bug2"}))
+store.dispatch(actions.bugAdded({description : "bug3"}))
+store.dispatch(actions.bugAdded({description : "bug4"}))
 
-// store.dispatch(actions.bugResolved({id: 3}));
+store.dispatch(actions.bugResolved({id: 3}));
 
-// //unsubscribe();
-// console.log("after bug resolved", store.getState());
+//unsubscribe();
+console.log("after bug resolved", store.getState());
 
-// store.dispatch(actions.bugRemoved({id: 2}));
+store.dispatch(actions.bugRemoved({id: 2}));
 
 
 
-// console.log("final state store", store.getState()); 
+console.log("final state store", store.getState()); 
 
 
 
 // change store import with projects
 
-store.dispatch(actions.incrementProject({name : "project 1"}))
+store.dispatch(action.incrementProject({name : "project 1"}))
 
 
