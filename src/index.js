@@ -1,6 +1,7 @@
 import configureStore from './store/configureStore';
 import * as action from "./store/projects";
 import * as actions from "./store/bugs";
+import { getBugUnresolved } from "./store/bugs";
 
 
 const store = configureStore(); 
@@ -23,6 +24,11 @@ store.dispatch(actions.bugResolved({id: 3}));
 //unsubscribe();
 console.log("after bug resolved", store.getState());
 
+
+//const bugUnresolved = store.getState().entities.bugs.filter(bug => !bug.resolved);
+const bugUnresolved = getBugUnresolved(store);
+
+console.log('to do', bugUnresolved);
 store.dispatch(actions.bugRemoved({id: 2}));
 
 
