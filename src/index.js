@@ -10,9 +10,15 @@ const store = configureStore();
 //console.log(store);                  you can see the prop
 // console.log(store.getState());      need subscribe
 
-store.subscribe(()=> {
-    console.log("every time that the state of store change", store.getState());
-})
+// store.subscribe(()=> {
+//     console.log("every time that the state of store change", store.getState());
+// })
+
+
+store.dispatch({
+    type: "error",
+    payload: { message: "An error occured"}
+});
 
 //add User
 store.dispatch(actionsUser.createUser({name : "Mimmo"}))
